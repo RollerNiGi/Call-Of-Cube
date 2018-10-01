@@ -1,0 +1,12 @@
+{
+  com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+    play: {
+      down: PlayButton-Down,
+      up: PlayButton-On
+    },
+    settings: {
+      down: SettingButton-Down,
+      up: SettingButton-On
+    }
+  }
+}

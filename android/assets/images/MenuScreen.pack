@@ -1,0 +1,40 @@
+MenuScreen.png
+size: 242, 50
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Jumper
+  rotate: false
+  xy: 0, 0
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+PlayButton-Down
+  rotate: false
+  xy: 50, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+PlayButton-On
+  rotate: false
+  xy: 98, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+SettingButton-Down
+  rotate: false
+  xy: 146, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+SettingButton-On
+  rotate: false
+  xy: 194, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
