@@ -38,9 +38,8 @@ public class MenuScreen extends AbstractGameScreen{
     public void render(float delta) {
         Gdx.gl.glClearColor(0.5f,0.5f,1.0f,0.0f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if(Gdx.input.isTouched()){
-            game.setScreen(new GameScreen(game));
-        }
+
+
 
         stage.act(delta);
         stage.draw();
@@ -57,7 +56,7 @@ public class MenuScreen extends AbstractGameScreen{
         stage.clear();
         Stack stack = new Stack();
         stage.addActor(stack);
-        stack.setSize(Constants.VIEWPORT_WIDTH,Constants.VIEWPORT_HEIGHT);
+        stack.setSize(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HTIGHT);
         stack.add(layerBackground);
         stack.add(layerLogo);
         stack.add(layerControls);
@@ -65,7 +64,39 @@ public class MenuScreen extends AbstractGameScreen{
 
     private Table buildControlLayer() {
         Table layer = new Table();
+        layer.right().bottom();
+
+        //开始按钮
+        btnMenuPlay = new Button(skinCOC,"play");
+        layer.add(btnMenuPlay);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+
+        layer.row();
+
+        //设置按钮
+        btnMenuOptions = new Button(skinCOC,"settings");
+        layer.add(btnMenuOptions);
+        btnMenuOptions.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onOptionsClicked();
+            }
+        });
+
         return  layer;
+    }
+
+    private void  onPlayClicked(){
+        game.setScreen(new GameScreen(game));
+    }
+
+    private void onOptionsClicked(){
+
     }
 
     private Table buildBackgourndLayer() {
@@ -85,7 +116,7 @@ public class MenuScreen extends AbstractGameScreen{
 
     @Override
     public void show() {
-        stage = new Stage(new StretchViewport(Constants.VIEWPORT_WIDTH,Constants.VIEWPORT_HEIGHT));
+        stage = new Stage(new StretchViewport(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HTIGHT));
         Gdx.input.setInputProcessor(stage);
         rebuildStage();
     }
