@@ -71,7 +71,7 @@ public class MenuScreen extends AbstractGameScreen{
     private Table buildBackgourndLayer() {
         Table layer = new Table();
 
-        return  layer;
+        return layer;
     }
 
     private Table buildLogoLayer() {
