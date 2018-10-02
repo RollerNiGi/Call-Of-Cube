@@ -53,7 +53,7 @@ public class Jumper extends AbstractGameObject{
         timeLeftJumpBufferPowerup =0;
 
         //粒子特效
-        dustParticles.load(Gdx.files.internal("particles/dust.pfx"),Gdx.files.internal("particles"));
+        dustParticles.load(Gdx.files.internal("particles/dust.liz"), Gdx.files.internal("particles"));
 
     }
     public void setJumping(boolean jumpKeyPressed){

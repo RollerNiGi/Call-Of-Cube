@@ -38,16 +38,7 @@ independent: false
 - X Offset - 
 active: false
 - Y Offset - 
-active: true
-lowMin: 0.0
-lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
+active: false
 - Spawn Shape - 
 shape: point
 - Spawn Width - 
@@ -76,35 +67,37 @@ lowMax: 0.0
 highMin: 0.75
 highMax: 0.75
 relative: false
-scalingCount: 3
+scalingCount: 4
 scaling0: 0.0
-scaling1: 0.26966292
-scaling2: 0.0
-timelineCount: 3
+scaling1: 0.0
+scaling2: 0.25842696
+scaling3: 1.0
+timelineCount: 4
 timeline0: 0.0
-timeline1: 0.6628571
-timeline2: 1.0
+timeline1: 0.001
+timeline2: 0.6723809
+timeline3: 1.0
 - Y Scale - 
 active: false
 - Velocity - 
 active: true
-lowMin: -1.0
-lowMax: -5.0
+lowMin: -5.0
+lowMax: -1.0
 highMin: 1.0
 highMax: 5.0
 relative: false
 scalingCount: 2
-scaling0: 1.0
-scaling1: 0.505618
+scaling0: 0.51123595
+scaling1: 0.51123595
 timelineCount: 2
 timeline0: 0.0
-timeline1: 0.0
+timeline1: 0.0019047619
 - Angle - 
 active: true
 lowMin: 0.0
 lowMax: 0.0
 highMin: 0.0
-highMax: 135.0
+highMax: 0.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -127,17 +120,17 @@ highMax: 5.0
 relative: false
 scalingCount: 3
 scaling0: 0.0
-scaling1: 0.25842696
-scaling2: 0.016853932
+scaling1: 0.252809
+scaling2: 0.0
 timelineCount: 3
 timeline0: 0.0
-timeline1: 0.6666667
-timeline2: 0.9942857
+timeline1: 0.6742857
+timeline2: 1.0
 - Tint - 
 colorsCount: 3
-colors0: 0.32156864
-colors1: 0.32156864
-colors2: 0.32156864
+colors0: 0.28235295
+colors1: 0.27058825
+colors2: 0.2627451
 timelineCount: 1
 timeline0: 0.0
 - Transparency - 
@@ -146,16 +139,18 @@ lowMax: 0.0
 highMin: 1.0
 highMax: 1.0
 relative: false
-scalingCount: 4
+scalingCount: 5
 scaling0: 0.0
-scaling1: 0.7247191
-scaling2: 0.9550562
-scaling3: 0.0
-timelineCount: 4
+scaling1: 0.98876405
+scaling2: 0.75
+scaling3: 1.0
+scaling4: 1.0
+timelineCount: 5
 timeline0: 0.0
-timeline1: 0.20192307
-timeline2: 0.7826923
-timeline3: 1.0
+timeline1: 0.28076923
+timeline2: 0.8
+timeline3: 0.999
+timeline4: 1.0
 - Options - 
 attached: false
 continuous: true
@@ -165,5 +160,5 @@ behind: false
 premultipliedAlpha: false
 spriteMode: single
 - Image Paths -
-particle.png
+/C:/Users/Rolle/Desktop/lizi1.png
 
