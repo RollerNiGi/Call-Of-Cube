@@ -59,9 +59,9 @@ public class WorldRenderer implements Disposable {
         float x = cameraGUI.viewportWidth/2;
         float y = cameraGUI.viewportHeight/2;
         if(worldController.isGameOver()){
-            BitmapFont fontGameOver = Assets.instance.fonts.defaultBig;
+            BitmapFont fontGameOver = Assets.instance.fonts.superBig;
             fontGameOver.setColor(1,0.25f,0.25f,1);
-            fontGameOver.draw(batch,"Game Over",x-95,y);
+            fontGameOver.draw(batch,"Game Over",x-240,y-30);
             fontGameOver.setColor(1,1,1,1);
         }
     }
@@ -79,7 +79,7 @@ public class WorldRenderer implements Disposable {
             batch.draw(Assets.instance.assetJumpBuffer1.JumpBuffer1,x,y,50,50,100,100,0.35f,-0.35f,0);
             batch.setColor(1,1,1,1);
             BitmapFont fontTimeJumpPowerUp = Assets.instance.fonts.defaultBig;
-            fontTimeJumpPowerUp.setColor(0.55f,0.55f,0.65f,1);
+            fontTimeJumpPowerUp.setColor(0.44f,0.57f,0.745f,1);
             fontTimeJumpPowerUp.draw(batch,""+(int)timeLeftJumpBufferPowerUp,x+75,y+40);
             fontTimeJumpPowerUp.setColor(1,1,1,1);
         }
@@ -91,7 +91,7 @@ public class WorldRenderer implements Disposable {
 
         batch.draw(Assets.instance.assetCoin1.Coin1,x,y,50,50,100,100,0.35f,-0.35f,0);
         BitmapFont fontGameOver = Assets.instance.fonts.defaultBig;
-        fontGameOver.setColor(0.75f,0.75f,0.45f,1);
+        fontGameOver.setColor(0.90f,0.82f,0.30f,1);
         fontGameOver.draw(batch,""+worldController.score,x+75,y+40);
         fontGameOver.setColor(1,1,1,1);
     }

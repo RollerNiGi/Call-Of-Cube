@@ -18,8 +18,9 @@ android {
     }
     defaultConfig {
         applicationId "com.rollernigi.game"
-        minSdkVersion 9
+        minSdkVersion 21
         targetSdkVersion 28
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
     }

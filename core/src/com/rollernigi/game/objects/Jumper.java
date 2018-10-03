@@ -110,7 +110,7 @@ public class Jumper extends AbstractGameObject{
             case GROUNDED:
                 jumpState = JUMP_STATE.FALLING;
                 if(velocity.x!=0){
-                    dustParticles.setPosition(position.x+dimension.x/2,position.y);
+                    dustParticles.setPosition(position.x+(5*dimension.x/8),position.y);
                     dustParticles.start();
                 }
                 break;
@@ -129,7 +129,7 @@ public class Jumper extends AbstractGameObject{
                 }
         }
         if(jumpState!=JUMP_STATE.GROUNDED){
-
+            dustParticles.allowCompletion();
             super.updateMotionY(deltaTime);
         }
     }

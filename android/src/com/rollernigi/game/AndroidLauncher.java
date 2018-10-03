@@ -3,7 +3,7 @@ package com.rollernigi.game;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-
+import com.google.android.gms.ads.MobileAds;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
@@ -14,6 +14,8 @@ public class AndroidLauncher extends AndroidApplication {
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		hideBottomUIMenu();
 		initialize(new RollerNiGiGame(), config);
+		// Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+		MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
 
 	}
 	protected void onResume() {

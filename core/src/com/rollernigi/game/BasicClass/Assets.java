@@ -20,6 +20,7 @@ public class Assets implements Disposable,AssetErrorListener {
         public final BitmapFont defaultSmall;
         public final BitmapFont defaultNormal;
         public final BitmapFont defaultBig;
+        public final BitmapFont superBig;
 
         public AssetFont(){
 
@@ -27,11 +28,13 @@ public class Assets implements Disposable,AssetErrorListener {
             defaultSmall = new BitmapFont(Gdx.files.internal("images/RegularFont.fnt"),true);
             defaultNormal = new BitmapFont(Gdx.files.internal("images/RegularFont.fnt"),true);
             defaultBig = new BitmapFont(Gdx.files.internal("images/RegularFont.fnt"),true);
+            superBig = new BitmapFont(Gdx.files.internal("images/RegularFont.fnt"),true);
 
             //设置字体尺寸
             defaultSmall.getData().setScale(0.85f);
             defaultNormal.getData().setScale(1.10f);
             defaultBig.getData().setScale(1.35f);
+            superBig.getData().setScale(3.0f);
 
             //为字体激活线性纹理过滤模式
 
