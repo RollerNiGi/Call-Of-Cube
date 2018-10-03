@@ -18,7 +18,7 @@ public class Constants {
 
     public static final int LIVES_START = 3;
 
-    public static final float ITEM_JUMPBUFFER_POWERUP_DURATION = 9;
+    public static final float ITEM_JUMPBUFFER_POWERUP_DURATION = 6;
     public static final float TIME_DELAY_GAME_OVER = 3;
 
     public static final String TEXTURE_ATLAS_UI = "images/MenuScreen.pack";

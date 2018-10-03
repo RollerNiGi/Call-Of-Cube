@@ -36,7 +36,9 @@ public class WorldController extends InputAdapter {
     public Level level;
     public int lives;
     public int score;
+    public float scoreViual;
     public Touchpad touchPad;
+    public float livesVisual;
     public TouchpadStyle style;
     public TextureRegionDrawable background;
     public TextureRegionDrawable knobRegion;
@@ -138,12 +140,14 @@ public class WorldController extends InputAdapter {
         Gdx.input.setInputProcessor(this);
         cameraHelper = new CameraHelper();
         lives = Constants.LIVES_START;
+        livesVisual = lives;
         timeLeftGameOverDelay=0;
         initLevel();
     }
 
     private void initLevel(){
         score =0;
+        scoreViual = score;
         level = new Level(Constants.Level_00);
         cameraHelper.setTarget(level.jumper);
     }
@@ -170,6 +174,10 @@ public class WorldController extends InputAdapter {
                 initLevel();
             }
         }
+        if(livesVisual>lives){
+            livesVisual=Math.max(lives,livesVisual-1*deltaTime);
+        }
+        if(scoreViual<score)scoreViual=Math.min(score,scoreViual+170*deltaTime);
     }
 
     private void handleDebugInput(float deltaTime) {

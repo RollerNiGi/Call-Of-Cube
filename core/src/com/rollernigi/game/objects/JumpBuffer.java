@@ -34,7 +34,7 @@ public class JumpBuffer extends AbstractGameObject {
     }
 
     public int getScore(){
-        return 64;
+        return 32;
     }
 
 }

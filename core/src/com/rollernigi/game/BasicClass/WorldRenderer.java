@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.Disposable;
 import com.rollernigi.game.util.Constants;
@@ -88,11 +89,18 @@ public class WorldRenderer implements Disposable {
     private void renderGuiScore(SpriteBatch batch){
         float x = -15;
         float y =-15;
-
-        batch.draw(Assets.instance.assetCoin1.Coin1,x,y,50,50,100,100,0.35f,-0.35f,0);
+        float offsetX = 50;
+        float offsetY = 50;
+        if(worldController.scoreViual<worldController.score){
+            long shakeAlpha = System.currentTimeMillis()%360;
+            float shakeDist = 1.5f;
+            offsetX += MathUtils.sinDeg(shakeAlpha*2.2f)*shakeDist;
+            offsetY += MathUtils.sinDeg(shakeAlpha*2.9f)*shakeDist;
+        }
+        batch.draw(Assets.instance.assetCoin1.Coin1,x,y,offsetX,offsetY,100,100,0.35f,-0.35f,0);
         BitmapFont fontGameOver = Assets.instance.fonts.defaultBig;
         fontGameOver.setColor(0.90f,0.82f,0.30f,1);
-        fontGameOver.draw(batch,""+worldController.score,x+75,y+40);
+        fontGameOver.draw(batch,""+(int)worldController.scoreViual,x+75,y+40);
         fontGameOver.setColor(1,1,1,1);
     }
 
@@ -104,6 +112,15 @@ public class WorldRenderer implements Disposable {
             batch.draw(Assets.instance.assetJumper1.Jumper1,x+i*50,y,50,50,100,100,0.35f,-0.35f,0);
             batch.setColor(1,1,1,1);
         }
+        if(worldController.lives>=0&&worldController.livesVisual>worldController.lives){
+            int i = worldController.lives;
+            float alphaColor = Math.max(0,worldController.livesVisual-worldController.lives-0.5f);
+            float alphaScale = (float) (0.35 * (2+worldController.lives - worldController.livesVisual) * 2);
+            float alphaRotate = -45*alphaColor;
+            batch.setColor(1.0f,0.7f,0.7f,alphaColor);
+            batch.draw(Assets.instance.assetJumper1.Jumper1,x+i*50,y,50,50,120,100,alphaScale,-alphaScale,alphaRotate);
+            batch.setColor(1,1,1,1);
+        }
     }
 
     private void renderGUI(SpriteBatch batch){
@@ -112,7 +129,6 @@ public class WorldRenderer implements Disposable {
         renderGuiJumpBufferPowerUp(batch);
         renderGuiScore(batch);
         renderLeftLives(batch);
-
         renderGuiGameOverMessage(batch);
 
         batch.end();
