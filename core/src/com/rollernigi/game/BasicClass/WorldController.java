@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -29,6 +30,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.rollernigi.game.util.CameraHelper;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.math.Interpolation;
+import com.rollernigi.game.screens.transitions.ScreenTransition;
+import com.rollernigi.game.screens.transitions.ScreenTransitionSlide;
 
 public class WorldController extends InputAdapter {
 
@@ -44,7 +48,7 @@ public class WorldController extends InputAdapter {
     public TextureRegionDrawable knobRegion;
 
     private float timeLeftGameOverDelay;
-    private Game game;
+    private DirectedGame game;
 
     public boolean isGameOver(){
         return lives<0;
@@ -131,13 +135,12 @@ public class WorldController extends InputAdapter {
 
     public CameraHelper cameraHelper;
 
-    public WorldController(Game game){
+    public WorldController(DirectedGame game){
         this.game = game;
         init();
     }
 
     private void init(){
-        Gdx.input.setInputProcessor(this);
         cameraHelper = new CameraHelper();
         lives = Constants.LIVES_START;
         livesVisual = lives;
@@ -235,7 +238,8 @@ public class WorldController extends InputAdapter {
     }
 
     private void backToMenu(){
-        game.setScreen(new MenuScreen(game));
+        ScreenTransition transition =ScreenTransitionSlide.init(0.75f,ScreenTransitionSlide.DOWN,false,Interpolation.bounceOut);
+        game.setScreen(new MenuScreen(game),transition);
     }
 
 }

@@ -4,7 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -15,7 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.rollernigi.game.BasicClass.Assets;
+import com.rollernigi.game.screens.transitions.DirectedGame;
+import com.rollernigi.game.screens.transitions.ScreenTransitionSlide;
 import com.rollernigi.game.util.Constants;
+import com.rollernigi.game.screens.transitions.ScreenTransition;
+import com.rollernigi.game.screens.transitions.ScreenTransitionFade;
 
 public class MenuScreen extends AbstractGameScreen{
     private static final String TAG = MenuScreen.class.getName();
@@ -30,7 +36,7 @@ public class MenuScreen extends AbstractGameScreen{
     private Button btnMenuOptions;
 
 
-    public MenuScreen(Game game) {
+    public MenuScreen(DirectedGame game) {
         super(game);
     }
 
@@ -92,7 +98,7 @@ public class MenuScreen extends AbstractGameScreen{
     }
 
     private void  onPlayClicked(){
-        game.setScreen(new GameScreen(game));
+        gotoGameScreen();
     }
 
     private void onOptionsClicked(){
@@ -117,7 +123,6 @@ public class MenuScreen extends AbstractGameScreen{
     @Override
     public void show() {
         stage = new Stage(new StretchViewport(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HTIGHT));
-        Gdx.input.setInputProcessor(stage);
         rebuildStage();
     }
 
@@ -130,5 +135,14 @@ public class MenuScreen extends AbstractGameScreen{
     @Override
     public void pause() {
 
+    }
+    @Override
+    public InputProcessor getInputProcessor(){
+        return stage;
+    }
+
+    private void gotoGameScreen(){
+        ScreenTransition transition = ScreenTransitionSlide.init(0.75f,ScreenTransitionSlide.DOWN,false,Interpolation.bounceOut);
+        game.setScreen(new GameScreen(game),transition);
     }
 }

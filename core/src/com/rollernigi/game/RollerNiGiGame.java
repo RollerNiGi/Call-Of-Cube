@@ -1,13 +1,14 @@
 package com.rollernigi.game;
 
-import com.badlogic.gdx.Game;
+
 import com.badlogic.gdx.assets.AssetManager;
 import com.rollernigi.game.BasicClass.Assets;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.rollernigi.game.screens.MenuScreen;
 
-public class RollerNiGiGame extends Game{
+public class RollerNiGiGame extends DirectedGame{
 
 
 

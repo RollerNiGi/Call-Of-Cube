@@ -1,10 +1,12 @@
 package com.rollernigi.game.screens;
+import com.badlogic.gdx.InputProcessor;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.rollernigi.game.BasicClass.WorldController;
 import com.rollernigi.game.BasicClass.WorldRenderer;
+import com.rollernigi.game.screens.transitions.DirectedGame;
 
 public class GameScreen extends AbstractGameScreen {
     private static final String TAG =GameScreen.class.getName();
@@ -14,7 +16,7 @@ public class GameScreen extends AbstractGameScreen {
 
     private boolean paused;
 
-    public GameScreen(Game game) {
+    public GameScreen(DirectedGame game) {
         super(game);
     }
 
@@ -56,5 +58,9 @@ public class GameScreen extends AbstractGameScreen {
     public void resume(){
         super.resume();
         paused=false;
+    }
+    @Override
+    public InputProcessor getInputProcessor(){
+        return worldController;
     }
 }
