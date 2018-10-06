@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.rollernigi.game.objects.AbstractGameObject;
 import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
@@ -46,6 +47,9 @@ public class WorldController extends InputAdapter {
     public TouchpadStyle style;
     public TextureRegionDrawable background;
     public TextureRegionDrawable knobRegion;
+    public boolean isInputAble=true;
+
+    public String selectedLevel = "levels/level00.png";
 
     private float timeLeftGameOverDelay;
     private DirectedGame game;
@@ -151,8 +155,8 @@ public class WorldController extends InputAdapter {
     private void initLevel(){
         score =0;
         scoreViual = score;
-        level = new Level(Constants.Level_00);
-        cameraHelper.setTarget(level.jumper);
+        level = new Level(selectedLevel);
+        cameraFollow(level.jumper,true);
     }
 
 
@@ -192,11 +196,14 @@ public class WorldController extends InputAdapter {
         }else if(Gdx.app.getType()== Application.ApplicationType.Android){
             level.jumper.velocity.x=level.jumper.terminalVelocity.x;
         }
-        if(Gdx.input.isTouched()||Gdx.input.isKeyPressed((Input.Keys.SPACE))){
-            level.jumper.setJumping(true);
-        }else {
-            level.jumper.setJumping(false);
+        if(isInputAble){
+            if(Gdx.input.isTouched()||Gdx.input.isKeyPressed((Input.Keys.SPACE))){
+                level.jumper.setJumping(true);
+            }else {
+                level.jumper.setJumping(false);
+            }
         }
+
     }
 
     @Override
@@ -240,6 +247,22 @@ public class WorldController extends InputAdapter {
     private void backToMenu(){
         ScreenTransition transition =ScreenTransitionSlide.init(0.75f,ScreenTransitionSlide.DOWN,false,Interpolation.bounceOut);
         game.setScreen(new MenuScreen(game),transition);
+    }
+
+    public void changeLevel(String levelNum){
+        selectedLevel="levels/level"+levelNum+".png";
+        initLevel();
+    }
+
+    public void cameraFollow(AbstractGameObject target,boolean isWoring){
+        if(isWoring){
+            cameraHelper.setTarget(target);
+        }
+
+    }
+
+    public void setInputAble(){
+        isInputAble=!isInputAble;
     }
 
 }

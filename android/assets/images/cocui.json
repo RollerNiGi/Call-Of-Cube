@@ -4,9 +4,31 @@
       down: PlayButton-Down,
       up: PlayButton-On
     },
+    defaultButton: {
+      down: DefaultButton2
+      up: DefaultButton
+      checked:DefaultButton2
+    },
+    StartButton: {
+      down: StartButton2
+      up: StartButton
+      checked:DefaultButton2
+    },
+    BlockButton: {
+      down: BlockButton2
+      up: BlockButton
+    },
+    BackButton: {
+      down: BackButton2
+      up: BackButton
+    },
     settings: {
       down: SettingButton-Down,
       up: SettingButton-On
     }
-  }
+
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.Image:{
+  background:{drawable:background},
+},
 }

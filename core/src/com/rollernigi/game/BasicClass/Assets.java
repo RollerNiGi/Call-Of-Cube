@@ -13,6 +13,8 @@ import com.rollernigi.game.util.Constants;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.Disposable;
 
+import jdk.nashorn.internal.ir.Block;
+
 public class Assets implements Disposable,AssetErrorListener {
 
     public AssetFont fonts;
@@ -21,6 +23,7 @@ public class Assets implements Disposable,AssetErrorListener {
         public final BitmapFont defaultNormal;
         public final BitmapFont defaultBig;
         public final BitmapFont superBig;
+        public final BitmapFont blockFont;
 
         public AssetFont(){
 
@@ -29,13 +32,14 @@ public class Assets implements Disposable,AssetErrorListener {
             defaultNormal = new BitmapFont(Gdx.files.internal("images/RegularFont.fnt"),true);
             defaultBig = new BitmapFont(Gdx.files.internal("images/RegularFont.fnt"),true);
             superBig = new BitmapFont(Gdx.files.internal("images/RegularFont.fnt"),true);
+            blockFont = new BitmapFont(Gdx.files.internal("images/BlockFont.fnt"),true);
 
             //设置字体尺寸
             defaultSmall.getData().setScale(0.85f);
             defaultNormal.getData().setScale(1.10f);
             defaultBig.getData().setScale(1.35f);
             superBig.getData().setScale(3.0f);
-
+            blockFont.getData().setScale(3.0f);
             //为字体激活线性纹理过滤模式
 
         }

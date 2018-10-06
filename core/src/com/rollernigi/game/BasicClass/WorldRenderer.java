@@ -16,6 +16,7 @@ public class WorldRenderer implements Disposable {
     private OrthographicCamera cameraGUI;
     private SpriteBatch batch;
     private WorldController worldController;
+    public boolean hideGUI=false;
 
     public WorldRenderer(WorldController worldController){
         this.worldController = worldController;
@@ -35,7 +36,7 @@ public class WorldRenderer implements Disposable {
 
     public void render(){
         renderWrold(batch);
-        renderGUI(batch);
+        if(hideGUI==false)renderGUI(batch);
     }
 
 
@@ -137,5 +138,9 @@ public class WorldRenderer implements Disposable {
     @Override
     public void dispose() {
         batch.dispose();
+    }
+
+    public void setHideGUI(){
+        hideGUI=!hideGUI;
     }
 }
