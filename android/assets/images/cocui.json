@@ -7,12 +7,26 @@
     defaultButton: {
       down: DefaultButton2
       up: DefaultButton
-      checked:DefaultButton2
     },
     StartButton: {
       down: StartButton2
       up: StartButton
-      checked:DefaultButton2
+    },
+    MusicButton: {
+      down: MusicButton2
+      up: MusicButton
+    },
+    MusicButton2: {
+      down: MusicButton4
+      up: MusicButton3
+    },
+    SoundButton: {
+      down: SoundButton2
+      up: SoundButton
+    },
+    SoundButton2: {
+      down: SoundButton4
+      up: SoundButton3
     },
     BlockButton: {
       down: BlockButton2

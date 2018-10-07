@@ -25,6 +25,7 @@ import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.rollernigi.game.screens.transitions.ScreenTransitionSlide;
 import com.rollernigi.game.util.Constants;
 import com.rollernigi.game.screens.transitions.ScreenTransition;
+import com.rollernigi.game.util.GamePerferences;
 import com.rollernigi.game.screens.transitions.ScreenTransitionFade;
 
 public class MenuScreen extends AbstractGameScreen{
@@ -42,10 +43,32 @@ public class MenuScreen extends AbstractGameScreen{
     private Button btnMenuOptions3;
     private Button btnMenuOptions4;
 
+    private boolean ssound=true,smusic=true;
+
     private boolean paused;
 
     private WorldController worldController;
     private WorldRenderer worldRenderer;
+
+    private void loadSettings(){
+        GamePerferences prefs = GamePerferences.instance;
+        prefs.load();
+        if(prefs.music==true){
+            smusic=true;
+            btnMenuOptions4 = new Button(skinCOC,"MusicButton");
+        }else if(prefs.music==false){
+            smusic=false;
+            btnMenuOptions4 = new Button(skinCOC,"MusicButton2");
+        }
+        if(prefs.sound==true){
+            ssound=true;
+            btnMenuOptions3 = new Button(skinCOC,"SoundButton");
+        }else if(prefs.sound==false){
+            ssound=false;
+            btnMenuOptions3 = new Button(skinCOC,"SoundButton2");
+        }
+       refresh();
+    }
 
 
     public MenuScreen(DirectedGame game) {
@@ -71,18 +94,10 @@ public class MenuScreen extends AbstractGameScreen{
         worldRenderer.setHideGUI();
         worldController.setInputAble();
         skinCOC=new Skin(Gdx.files.internal(Constants.SKIN_COC_UI),new TextureAtlas(Constants.TEXTURE_ATLAS_UI));
+        btnMenuOptions4 = new Button(skinCOC,"MusicButton");
+        btnMenuOptions4 = new Button(skinCOC,"MusicButton2");
+        loadSettings();
 
-        Table layerBackground = buildBackgourndLayer();
-        Table layerLogo = buildLogoLayer();
-        Table layerControls = buildControlLayer();
-
-        stage.clear();
-        Stack stack = new Stack();
-        stage.addActor(stack);
-        stack.setSize(800f,480f);
-        stack.add(layerBackground);
-        stack.add(layerLogo);
-        stack.add(layerControls);
     }
 
     private Table buildBackgourndLayer() {
@@ -125,25 +140,29 @@ public class MenuScreen extends AbstractGameScreen{
             }
         });
         layer.row();
-        btnMenuOptions3 = new Button(skinCOC,"defaultButton");
         layer.add(btnMenuOptions3);
-        btnMenuOptions.addListener(new ChangeListener() {
+        btnMenuOptions3.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onOptionsClicked();
+                ssound=!ssound;
+                GamePerferences prers = GamePerferences.instance;
+                prers.sound=ssound;
+                prers.save();
+                loadSettings();
             }
         });
         layer.row();
-        btnMenuOptions4 = new Button(skinCOC,"defaultButton");
         layer.add(btnMenuOptions4);
-        btnMenuOptions.addListener(new ChangeListener() {
+        btnMenuOptions4.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onOptionsClicked();
+                smusic=!smusic;
+                GamePerferences prers = GamePerferences.instance;
+                prers.music=smusic;
+                prers.save();
+                loadSettings();
             }
         });
-
-
 
         return  layer;
     }
@@ -198,4 +217,19 @@ public class MenuScreen extends AbstractGameScreen{
         ScreenTransition transition = ScreenTransitionSlide.init(0.75f,ScreenTransitionSlide.LEFT,false,Interpolation.bounceOut);
         game.setScreen(new SelectStageScreen(game),transition);
     }
+
+    private void refresh(){
+        Table layerBackground = buildBackgourndLayer();
+        Table layerLogo = buildLogoLayer();
+        Table layerControls = buildControlLayer();
+
+        stage.clear();
+        Stack stack = new Stack();
+        stage.addActor(stack);
+        stack.setSize(800f,480f);
+        stack.add(layerBackground);
+        stack.add(layerLogo);
+        stack.add(layerControls);
+    }
+
 }

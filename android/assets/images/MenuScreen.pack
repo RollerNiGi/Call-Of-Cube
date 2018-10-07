@@ -1,5 +1,5 @@
 MenuScreen.png
-size: 1920, 1150
+size: 1920, 1220
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -19,7 +19,7 @@ BackButton2
   index: -1
 background
   rotate: false
-  xy: 0, 70
+  xy: 0, 140
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
@@ -40,14 +40,14 @@ BlockButton2
   index: -1
 DefaultButton
   rotate: false
-  xy: 1056, 0
+  xy: 267, 70
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
   index: -1
 DefaultButton2
   rotate: false
-  xy: 1323, 0
+  xy: 1602, 70
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
@@ -57,6 +57,34 @@ Jumper
   xy: 192, 0
   size: 50, 50
   orig: 50, 50
+  offset: 0, 0
+  index: -1
+MusicButton
+  rotate: false
+  xy: 534, 70
+  size: 267, 70
+  orig: 267, 70
+  offset: 0, 0
+  index: -1
+MusicButton2
+  rotate: false
+  xy: 1068, 70
+  size: 267, 70
+  orig: 267, 70
+  offset: 0, 0
+  index: -1
+MusicButton3
+  rotate: false
+  xy: 801, 70
+  size: 267, 70
+  orig: 267, 70
+  offset: 0, 0
+  index: -1
+MusicButton4
+  rotate: false
+  xy: 1335, 70
+  size: 267, 70
+  orig: 267, 70
   offset: 0, 0
   index: -1
 PlayButton-Down
@@ -87,16 +115,44 @@ SettingButton-On
   orig: 48, 48
   offset: 0, 0
   index: -1
-StartButton
+SoundButton
+  rotate: false
+  xy: 1056, 0
+  size: 267, 70
+  orig: 267, 70
+  offset: 0, 0
+  index: -1
+SoundButton2
   rotate: false
   xy: 522, 0
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
   index: -1
-StartButton2
+SoundButton3
   rotate: false
   xy: 789, 0
+  size: 267, 70
+  orig: 267, 70
+  offset: 0, 0
+  index: -1
+SoundButton4
+  rotate: false
+  xy: 1590, 0
+  size: 267, 70
+  orig: 267, 70
+  offset: 0, 0
+  index: -1
+StartButton
+  rotate: false
+  xy: 0, 70
+  size: 267, 70
+  orig: 267, 70
+  offset: 0, 0
+  index: -1
+StartButton2
+  rotate: false
+  xy: 1323, 0
   size: 267, 70
   orig: 267, 70
   offset: 0, 0

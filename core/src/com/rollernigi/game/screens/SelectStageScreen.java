@@ -17,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.rollernigi.game.BasicClass.Assets;
+import com.rollernigi.game.BasicClass.WorldController;
+import com.rollernigi.game.BasicClass.WorldRenderer;
 import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.rollernigi.game.screens.transitions.ScreenTransitionSlide;
 import com.rollernigi.game.util.Constants;
@@ -29,10 +31,28 @@ public class SelectStageScreen extends AbstractGameScreen{
     private Stage stage;
     private Skin skinCOC;
 
+
+    public String selectedLevel="00";
+
     //菜单
     private Image imgBackground;
     private Image imgJumper;
     private Button btnMenuPlay;
+    private Button btnMenuPlay2;
+    private Button btnMenuPlay3;
+    private Button btnMenuPlay4;
+    private Button btnMenuPlay5;
+    private Button btnMenuPlay6;
+    private Button btnMenuPlay7;
+    private Button btnMenuPlay8;
+    private Button btnMenuPlay9;
+    private Button btnMenuPlay10;
+    private Button btnMenuPlay11;
+    private Button btnMenuPlay12;
+    private Button btnMenuPlay13;
+    private Button btnMenuPlay14;
+    private Button btnMenuPlay15;
+    private Button btnMenuPlay16;
     private Button btnMenuOptions;
 
     //TODO:Add more levels
@@ -72,7 +92,6 @@ public class SelectStageScreen extends AbstractGameScreen{
 
     private Table buildControlLayer1() {
         Table layer = new Table();
-        layer.right().bottom();
 
         //开始按钮
         btnMenuPlay = new Button(skinCOC,"BlockButton");
@@ -83,6 +102,141 @@ public class SelectStageScreen extends AbstractGameScreen{
                 onPlayClicked();
             }
         });
+
+        //开始按钮
+        btnMenuPlay2 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay2);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+
+        //开始按钮
+        btnMenuPlay3 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay3);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+
+        //开始按钮
+        btnMenuPlay4 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay4);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay5 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay5);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay6 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay6);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay7 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay7);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay8 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay8);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        layer.row();
+        //开始按钮
+        btnMenuPlay9 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay9);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+
+        //开始按钮
+        btnMenuPlay10 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay10);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+
+        //开始按钮
+        btnMenuPlay11 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay11);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+
+        //开始按钮
+        btnMenuPlay12 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay12);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay13 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay13);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay14 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay14);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay15 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay15);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+        btnMenuPlay16 = new Button(skinCOC,"BlockButton");
+        layer.add(btnMenuPlay16);
+        btnMenuPlay.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                onPlayClicked();
+            }
+        });
+
 
 
         return  layer;
@@ -151,11 +305,15 @@ public class SelectStageScreen extends AbstractGameScreen{
 
     private void gotoGameScreen(){
         ScreenTransition transition = ScreenTransitionFade.init(0.75f);
-        game.setScreen(new GameScreen(game),transition);
+        game.setScreen(new  GameScreen(game),transition);
     }
 
     private void backToMenuScreen(){
         ScreenTransition transition = ScreenTransitionSlide.init(0.75f,ScreenTransitionSlide.RIGHT,false,Interpolation.bounceOut);
         game.setScreen(new MenuScreen(game),transition);
+    }
+
+    public String getSelectedLevel() {
+        return selectedLevel;
     }
 }
