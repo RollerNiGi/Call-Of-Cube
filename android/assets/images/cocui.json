@@ -28,6 +28,10 @@
       down: SoundButton4
       up: SoundButton3
     },
+    StopButton: {
+      down: StopButton2
+      up: StopButton
+    },
     BlockButton: {
       down: BlockButton2
       up: BlockButton

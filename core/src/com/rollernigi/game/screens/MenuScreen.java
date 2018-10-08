@@ -94,8 +94,6 @@ public class MenuScreen extends AbstractGameScreen{
         worldRenderer.setHideGUI();
         worldController.setInputAble();
         skinCOC=new Skin(Gdx.files.internal(Constants.SKIN_COC_UI),new TextureAtlas(Constants.TEXTURE_ATLAS_UI));
-        btnMenuOptions4 = new Button(skinCOC,"MusicButton");
-        btnMenuOptions4 = new Button(skinCOC,"MusicButton2");
         loadSettings();
 
     }
@@ -192,7 +190,7 @@ public class MenuScreen extends AbstractGameScreen{
 
         worldController = new WorldController(game);
         worldRenderer = new WorldRenderer((worldController));
-        stage = new Stage(new StretchViewport(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HTIGHT));
+        stage = new Stage(new StretchViewport(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HEIGHT));
         rebuildStage();
     }
 

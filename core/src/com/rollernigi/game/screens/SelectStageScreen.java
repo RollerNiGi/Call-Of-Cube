@@ -24,6 +24,7 @@ import com.rollernigi.game.screens.transitions.ScreenTransitionSlide;
 import com.rollernigi.game.util.Constants;
 import com.rollernigi.game.screens.transitions.ScreenTransition;
 import com.rollernigi.game.screens.transitions.ScreenTransitionFade;
+import com.rollernigi.game.util.GamePerferences;
 
 public class SelectStageScreen extends AbstractGameScreen{
     private static final String TAG = MenuScreen.class.getName();
@@ -83,7 +84,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         stage.clear();
         Stack stack = new Stack();
         stage.addActor(stack);
-        stack.setSize(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HTIGHT);
+        stack.setSize(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HEIGHT);
         stack.add(layerBackground);
         stack.add(layerLogo);
         stack.add(layerControls1);
@@ -99,141 +100,141 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("00");
             }
         });
 
         //开始按钮
         btnMenuPlay2 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay2);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay2.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("00");
             }
         });
 
         //开始按钮
         btnMenuPlay3 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay3);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay3.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("00");
             }
         });
 
         //开始按钮
         btnMenuPlay4 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay4);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay4.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("00");
             }
         });
         btnMenuPlay5 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay5);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay5.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         btnMenuPlay6 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay6);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay6.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         btnMenuPlay7 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay7);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay7.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         btnMenuPlay8 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay8);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay8.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         layer.row();
         //开始按钮
         btnMenuPlay9 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay9);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay9.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
 
         //开始按钮
         btnMenuPlay10 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay10);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay10.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
 
         //开始按钮
         btnMenuPlay11 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay11);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay11.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
 
         //开始按钮
         btnMenuPlay12 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay12);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay12.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         btnMenuPlay13 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay13);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay13.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         btnMenuPlay14 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay14);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay14.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         btnMenuPlay15 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay15);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay15.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
         btnMenuPlay16 = new Button(skinCOC,"BlockButton");
         layer.add(btnMenuPlay16);
-        btnMenuPlay.addListener(new ChangeListener() {
+        btnMenuPlay16.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked();
+                onPlayClicked("03");
             }
         });
 
@@ -259,7 +260,12 @@ public class SelectStageScreen extends AbstractGameScreen{
         return  layer;
     }
 
-    private void  onPlayClicked(){
+    private void  onPlayClicked(String level){
+        GamePerferences prefs = GamePerferences.instance;
+        prefs.currentLevel=level;
+        prefs.save();
+        prefs.load();
+        Gdx.app.debug(TAG,"#CurrentLevel"+prefs.currentLevel);
         gotoGameScreen();
     }
 
@@ -284,7 +290,7 @@ public class SelectStageScreen extends AbstractGameScreen{
 
     @Override
     public void show() {
-        stage = new Stage(new StretchViewport(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HTIGHT));
+        stage = new Stage(new StretchViewport(Constants.VIEWPORT_GUI_WIDTH,Constants.VIEWPORT_GUI_HEIGHT));
         rebuildStage();
     }
 
@@ -313,7 +319,4 @@ public class SelectStageScreen extends AbstractGameScreen{
         game.setScreen(new MenuScreen(game),transition);
     }
 
-    public String getSelectedLevel() {
-        return selectedLevel;
-    }
 }

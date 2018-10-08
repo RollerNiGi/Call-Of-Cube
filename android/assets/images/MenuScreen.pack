@@ -1,5 +1,5 @@
 MenuScreen.png
-size: 1920, 1220
+size: 1920, 1290
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -12,35 +12,35 @@ BackButton
   index: -1
 BackButton2
   rotate: false
-  xy: 452, 0
+  xy: 382, 0
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 background
   rotate: false
-  xy: 0, 140
+  xy: 0, 210
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
 BlockButton
   rotate: false
-  xy: 312, 0
+  xy: 452, 0
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 BlockButton2
   rotate: false
-  xy: 382, 0
+  xy: 312, 0
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 DefaultButton
   rotate: false
-  xy: 267, 70
+  xy: 534, 70
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
@@ -61,7 +61,7 @@ Jumper
   index: -1
 MusicButton
   rotate: false
-  xy: 534, 70
+  xy: 801, 70
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
@@ -75,7 +75,7 @@ MusicButton2
   index: -1
 MusicButton3
   rotate: false
-  xy: 801, 70
+  xy: 0, 140
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
@@ -89,14 +89,14 @@ MusicButton4
   index: -1
 PlayButton-Down
   rotate: false
-  xy: 144, 0
+  xy: 0, 0
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 PlayButton-On
   rotate: false
-  xy: 0, 0
+  xy: 144, 0
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -117,43 +117,57 @@ SettingButton-On
   index: -1
 SoundButton
   rotate: false
-  xy: 1056, 0
+  xy: 267, 70
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
   index: -1
 SoundButton2
   rotate: false
-  xy: 522, 0
+  xy: 1306, 0
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
   index: -1
 SoundButton3
   rotate: false
-  xy: 789, 0
+  xy: 0, 70
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
   index: -1
 SoundButton4
   rotate: false
-  xy: 1590, 0
+  xy: 1573, 0
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
   index: -1
 StartButton
   rotate: false
-  xy: 0, 70
+  xy: 772, 0
   size: 267, 70
   orig: 267, 70
   offset: 0, 0
   index: -1
 StartButton2
   rotate: false
-  xy: 1323, 0
+  xy: 1039, 0
   size: 267, 70
   orig: 267, 70
+  offset: 0, 0
+  index: -1
+StopButton
+  rotate: false
+  xy: 647, 0
+  size: 125, 33
+  orig: 125, 33
+  offset: 0, 0
+  index: -1
+StopButton2
+  rotate: false
+  xy: 522, 0
+  size: 125, 33
+  orig: 125, 33
   offset: 0, 0
   index: -1

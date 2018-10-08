@@ -23,7 +23,7 @@ public class GamePerferences
     public void load(){
         sound = prers.getBoolean("sound",true);
         music = prers.getBoolean("music",true);
-        currentLevel = prers.getString("currentLevel","999");
+        currentLevel = prers.getString("currentLevel","00");
     }
 
     public void save(){

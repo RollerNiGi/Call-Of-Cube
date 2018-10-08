@@ -8,7 +8,7 @@ public class Constants {
     public static final float VIEWPORT_HEIGHT = 5.0f;
 
     public static final float VIEWPORT_GUI_WIDTH = 800f;
-    public static final float VIEWPORT_GUI_HTIGHT= 480f;
+    public static final float VIEWPORT_GUI_HEIGHT= 480f;
 
 
     //纹理集描述文件路径
