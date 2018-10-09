@@ -9,11 +9,14 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.rollernigi.game.util.Constants;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.Disposable;
 
-import jdk.nashorn.internal.ir.Block;
+import java.security.PublicKey;
+
 
 public class Assets implements Disposable,AssetErrorListener {
 
@@ -52,6 +55,8 @@ public class Assets implements Disposable,AssetErrorListener {
     public AssetBlock1 assetBlock1;
     public AssetJumper1 assetJumper1;
     public AssetGamepad assetGamepad;
+    public AssetSounds sounds;
+    public AssetMusic music;
 
     public static final String TAG = Assets.class.getName();
 
@@ -68,6 +73,13 @@ public class Assets implements Disposable,AssetErrorListener {
         assetManager.setErrorListener(this);
         //预加载纹理集资源
         assetManager.load(Constants.TETURE_ATLAS_OBJECTS, TextureAtlas.class);
+        //加载音频资源
+        assetManager.load("sounds/CommonJump.wav",Sound.class);
+        assetManager.load("sounds/Power_Up.wav",Sound.class);
+        assetManager.load("sounds/PickCoin.wav",Sound.class);
+        assetManager.load("sounds/PowerJump.wav",Sound.class);
+        assetManager.load("sounds/Live_Lost.wav",Sound.class);
+        assetManager.load("music/COCBackgroundMusic.mp3",Music.class);
         //开始加载资源
         assetManager.finishLoading();
         Gdx.app.debug(TAG,"#of assets loaded"+assetManager.getAssetNames().size);
@@ -75,6 +87,8 @@ public class Assets implements Disposable,AssetErrorListener {
             Gdx.app.debug(TAG,"assets:"+a);
         }
         TextureAtlas atlas = assetManager.get(Constants.TETURE_ATLAS_OBJECTS);
+
+
 
         //激活平滑纹理过滤
         for(Texture t:atlas.getTextures()){
@@ -87,6 +101,8 @@ public class Assets implements Disposable,AssetErrorListener {
         assetJumper1 = new AssetJumper1(atlas);
         assetBlock1 = new AssetBlock1(atlas);
         assetCoin1 = new AssetCoin1(atlas);
+        sounds = new AssetSounds(assetManager);
+        music = new AssetMusic(assetManager);
     }
 
     @Override
@@ -142,6 +158,29 @@ public class Assets implements Disposable,AssetErrorListener {
         public AssetGamepad(TextureAtlas atlas){
             GamepadBG = atlas.findRegion("GamepadBackground");
             GamepadKN = atlas.findRegion("GamepadKnob");
+        }
+    }
+
+    public class AssetSounds{
+        public final Sound jump;
+        public final Sound powerJump;
+        public final Sound powerUp;
+        public final Sound pickCoin;
+        public final Sound liveLost;
+        public AssetSounds(AssetManager am){
+            jump = am.get("sounds/CommonJump.wav",Sound.class);
+            powerUp = am.get("sounds/Power_Up.wav",Sound.class);
+            pickCoin = am.get("sounds/PickCoin.wav",Sound.class);
+            powerJump = am.get("sounds/PowerJump.wav",Sound.class);
+            liveLost = am.get("sounds/Live_Lost.wav",Sound.class);
+        }
+    }
+
+    public class AssetMusic {
+        public final Music song01;
+
+        public AssetMusic(AssetManager am){
+            song01 = am.get("music/COCBackgroundMusic.mp3",Music.class);
         }
     }
 

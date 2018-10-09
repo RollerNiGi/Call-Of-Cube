@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rollernigi.game.objects.Rock;
 import com.rollernigi.game.screens.MenuScreen;
+import com.rollernigi.game.util.AudioMangager;
 import com.rollernigi.game.util.Constants;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -52,6 +53,7 @@ public class WorldController extends InputAdapter {
     public String selectedLevel = "levels/level00.png";
 
     private float timeLeftGameOverDelay;
+    private boolean playLoseLiveSound=true;
     private DirectedGame game;
 
     public boolean isGameOver(){
@@ -96,11 +98,13 @@ public class WorldController extends InputAdapter {
 
     private void onCollisionJumperWithCoin(Coin coin){
         coin.collected=true;
+        AudioMangager.instance.play(Assets.instance.sounds.pickCoin);
         score+=coin.getScore();
     }
 
     private void onCollisionJumperWithJumpBuffer(JumpBuffer jumpBuffer){
         jumpBuffer.collected =true;
+        AudioMangager.instance.play(Assets.instance.sounds.powerUp);
         score+=jumpBuffer.getScore();
         level.jumper.setJumpBufferPowerup(true);
     }
@@ -174,6 +178,7 @@ public class WorldController extends InputAdapter {
         cameraHelper.update(deltaTime);
 
         if(!isGameOver()&&isPalyerFallDown()){
+            if(playLoseLiveSound==true) AudioMangager.instance.play(Assets.instance.sounds.liveLost);
             lives--;
             if (isGameOver()){
                 timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_OVER;
@@ -259,6 +264,10 @@ public class WorldController extends InputAdapter {
             cameraHelper.setTarget(target);
         }
 
+    }
+
+    public void setPlayLoseLiveSound(boolean boo){
+        playLoseLiveSound =boo;
     }
 
     public void setInputAble(){

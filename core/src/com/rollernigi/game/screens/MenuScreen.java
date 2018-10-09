@@ -23,6 +23,7 @@ import com.rollernigi.game.BasicClass.WorldController;
 import com.rollernigi.game.BasicClass.WorldRenderer;
 import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.rollernigi.game.screens.transitions.ScreenTransitionSlide;
+import com.rollernigi.game.util.AudioMangager;
 import com.rollernigi.game.util.Constants;
 import com.rollernigi.game.screens.transitions.ScreenTransition;
 import com.rollernigi.game.util.GamePerferences;
@@ -90,6 +91,7 @@ public class MenuScreen extends AbstractGameScreen{
     }
 
     private void rebuildStage(){
+        worldController.setPlayLoseLiveSound(false);
         worldController.changeLevel("999");
         worldRenderer.setHideGUI();
         worldController.setInputAble();
@@ -146,6 +148,7 @@ public class MenuScreen extends AbstractGameScreen{
                 GamePerferences prers = GamePerferences.instance;
                 prers.sound=ssound;
                 prers.save();
+                AudioMangager.instance.onSettingUpdate();
                 loadSettings();
             }
         });
@@ -158,6 +161,7 @@ public class MenuScreen extends AbstractGameScreen{
                 GamePerferences prers = GamePerferences.instance;
                 prers.music=smusic;
                 prers.save();
+                AudioMangager.instance.onSettingUpdate();
                 loadSettings();
             }
         });

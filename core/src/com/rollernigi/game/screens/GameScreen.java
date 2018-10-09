@@ -71,7 +71,8 @@ public class GameScreen extends AbstractGameScreen {
         skinCOC=new Skin(Gdx.files.internal(Constants.SKIN_COC_UI),new TextureAtlas(Constants.TEXTURE_ATLAS_UI));
         stopButton = new Button(skinCOC,"StopButton");
         stopButton.setWidth(127);
-        stopButton.setPosition(643,388);
+        stopButton.setHeight(38);
+        stopButton.setPosition(643,380);
         stopButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {

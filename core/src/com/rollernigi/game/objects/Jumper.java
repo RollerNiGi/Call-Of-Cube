@@ -2,7 +2,9 @@ package com.rollernigi.game.objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.rollernigi.game.BasicClass.Assets;
+import com.rollernigi.game.util.AudioMangager;
 import com.rollernigi.game.util.Constants;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
@@ -60,6 +62,7 @@ public class Jumper extends AbstractGameObject{
         switch (jumpState){
             case GROUNDED:
                 if(jumpKeyPressed){
+                    AudioMangager.instance.play(Assets.instance.sounds.jump);
                     timeJumping = 0;
                     jumpState = JUMP_STATE.JUMP_RISING;
                 }
@@ -72,6 +75,7 @@ public class Jumper extends AbstractGameObject{
             case FALLING:
             case JUMP_FALLING:
                 if (jumpKeyPressed&&hasJumpBufferPowerup){
+                    AudioMangager.instance.play(Assets.instance.sounds.powerJump,1,MathUtils.random(1.0f,1.1f));
                     timeJumping = JUMP_TIME_OFFSET_FLYING;
                     jumpState=JUMP_STATE.JUMP_RISING;
                 }
