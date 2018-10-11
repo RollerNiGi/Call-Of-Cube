@@ -57,6 +57,7 @@ public class Assets implements Disposable,AssetErrorListener {
     public AssetGamepad assetGamepad;
     public AssetSounds sounds;
     public AssetMusic music;
+    public AssetLevelDecoration assetLevelDecoration;
 
     public static final String TAG = Assets.class.getName();
 
@@ -97,6 +98,7 @@ public class Assets implements Disposable,AssetErrorListener {
 
         fonts = new AssetFont();
         //创建游戏对象
+        assetLevelDecoration=new AssetLevelDecoration((atlas));
         assetJumpBuffer1 = new AssetJumpBuffer1(atlas);
         assetJumper1 = new AssetJumper1(atlas);
         assetBlock1 = new AssetBlock1(atlas);
@@ -116,6 +118,16 @@ public class Assets implements Disposable,AssetErrorListener {
         fonts.defaultBig.dispose();
         fonts.defaultNormal.dispose();
         fonts.defaultSmall.dispose();
+    }
+
+    public class  AssetLevelDecoration{
+        public final AtlasRegion smallPart;
+        public final AtlasRegion goal;
+
+        public AssetLevelDecoration(TextureAtlas atlas){
+            smallPart = atlas.findRegion("FallBreak");
+            goal = atlas.findRegion("Goal");
+        }
     }
 
     public class AssetJumper1{

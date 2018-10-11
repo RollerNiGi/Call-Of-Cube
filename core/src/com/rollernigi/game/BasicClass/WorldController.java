@@ -5,7 +5,15 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
 import com.rollernigi.game.objects.AbstractGameObject;
+import com.rollernigi.game.objects.FallBreak;
 import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
@@ -45,6 +53,7 @@ public class WorldController extends InputAdapter {
     public float scoreViual;
     public Touchpad touchPad;
     public float livesVisual;
+    public World b2dWorld;
     public TouchpadStyle style;
     public TextureRegionDrawable background;
     public TextureRegionDrawable knobRegion;
@@ -54,6 +63,7 @@ public class WorldController extends InputAdapter {
 
     private float timeLeftGameOverDelay;
     private boolean playLoseLiveSound=true;
+    private boolean goalReached;
     private DirectedGame game;
 
     public boolean isGameOver(){
@@ -154,6 +164,7 @@ public class WorldController extends InputAdapter {
         livesVisual = lives;
         timeLeftGameOverDelay=0;
         initLevel();
+
     }
 
     private void initLevel(){
@@ -209,6 +220,65 @@ public class WorldController extends InputAdapter {
             }
         }
 
+    }
+
+    private void initPyhsics(){
+        if(b2dWorld!=null)b2dWorld.dispose();
+        b2dWorld = new World(new Vector2(0,-9.81f),true);
+        //Rocks
+        Vector2 origin = new Vector2();
+        for(Rock rock:level.rocks){
+            BodyDef bodyDef = new BodyDef();
+            bodyDef.type=BodyDef.BodyType.KinematicBody;
+            bodyDef.position.set(rock.position);
+            Body body = b2dWorld.createBody(bodyDef);
+            rock.body = body;
+            PolygonShape polygonShape = new PolygonShape();
+            origin.x=rock.bounds.width/2.0f;
+            origin.y=rock.bounds.height/2.0f;
+            polygonShape.setAsBox(rock.bounds.width/2.0f,rock.bounds.height/2.0f,origin,0);
+            FixtureDef fixtureDef = new FixtureDef();
+            fixtureDef.shape = polygonShape;
+            body.createFixture(fixtureDef);
+            polygonShape.dispose();
+        }
+    }
+
+    private void spawnFallBreaks(Vector2 pos,int numFallbreaks,float radius){
+        float fallbreakShapeScale = 0.5f;
+        //创建fallbreak对象和相应的body对象及fixture对象
+        for(int i =0 ;i<numFallbreaks;i++){
+            FallBreak fallBreak = new FallBreak();
+            //计算随机生成的位置，旋转角度以及缩放因子
+            float x =MathUtils.random(-radius,radius);
+            float y =MathUtils.random(5.0f,15.0f);
+            float rotation=MathUtils.random(0.0f,360.0f)*MathUtils.degreesToRadians;
+            float fallbreakScale = MathUtils.random(0.5f,1.5f);
+            fallBreak.scale.set(fallbreakScale,fallbreakScale);
+            //为fallbreak对象创建Box2D body并初始化至初始位置和起始旋转角度
+            BodyDef bodyDef = new BodyDef();
+            bodyDef.position.set(pos);
+            bodyDef.position.add(x,y);
+            bodyDef.angle = rotation;
+            Body body = b2dWorld.createBody(bodyDef);
+            body.setType(BodyDef.BodyType.DynamicBody);
+            fallBreak.body=body;
+            //为fallbreak对象创建矩形形状，以便与其他对象参与碰撞
+            PolygonShape polygonShape = new PolygonShape();
+            float halfWidth = fallBreak.bounds.width/2.0f*fallbreakScale;
+            float halfHeight = fallBreak.bounds.height/2.0f*fallbreakScale;
+            polygonShape.setAsBox(halfWidth*fallbreakShapeScale,halfHeight*fallbreakShapeScale);
+            //设置物理属性
+            FixtureDef fixtureDef = new FixtureDef();
+            fixtureDef.shape = polygonShape;
+            fixtureDef.density=50;
+            fixtureDef.restitution =0.5f;
+            fixtureDef.friction = 0.5f;
+            body.createFixture(fixtureDef);
+            polygonShape.dispose();
+            //将fallbreak对象添加到列表，以便更新和渲染
+            level.fallBreaks.add(fallBreak);
+        }
     }
 
     @Override

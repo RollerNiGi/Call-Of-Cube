@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rollernigi.game.objects.AbstractGameObject;
 import com.rollernigi.game.objects.Coin;
 import com.rollernigi.game.objects.JumpBuffer;
+import com.rollernigi.game.objects.FallBreak;
+import com.rollernigi.game.objects.Goal;
 import com.rollernigi.game.objects.Jumper;
 import com.rollernigi.game.objects.Rock;
 import com.badlogic.gdx.utils.Array;
@@ -14,10 +16,13 @@ public class Level {
     public static final String TAG=Level.class.getName();
     public Jumper jumper;
     public Array<Coin> coins;
+    public Array<FallBreak> fallBreaks;
+    public Goal goal;
     public Array<JumpBuffer> jumpBuffers;
     public enum BLOCK_TYPE{
         EMPTY(0,0,0),//黑色
         ROCK(0,255,0),//绿色
+        GOAL(255,0,0),//红色
         PLAYER_SPAWNPOINT(255,255,255),//白色
         ITEM_JUMPBUFFER(255,0,255),//紫色
         ITEM_COIN(255,255,0);//黄色
@@ -85,6 +90,14 @@ public class Level {
                         rocks.get(rocks.size-1).increaseLength(1);
                     }
                 }
+                //结束路标
+                else if (BLOCK_TYPE.GOAL.sameColor(currentPixel)){
+                    obj = new Goal();
+                    offsetHeight = -7.0f;
+                    obj.position.set(pixelX,baseHeight+offsetHeight);
+                    goal = (Goal)obj;
+                }
+
                 //玩家出生点
                 else if(BLOCK_TYPE.PLAYER_SPAWNPOINT.sameColor(currentPixel)){
                     obj = new Jumper();
@@ -123,12 +136,16 @@ public class Level {
     }
 
     public void render(SpriteBatch batch){
+        goal.render(batch);
         //渲染游戏对象
         for(Rock rock : rocks){
             rock.render(batch);
         }
         for (Coin coin:coins){
             coin.render(batch);
+        }
+        for(FallBreak fallBreak:fallBreaks){
+            fallBreak.render(batch);
         }
         for(JumpBuffer jumpBuffer:jumpBuffers){
             jumpBuffer.render(batch);
@@ -143,6 +160,9 @@ public class Level {
         }
         for (Coin coin:coins){
             coin.update(deltaTime);
+        }
+        for(FallBreak fallBreak:fallBreaks){
+            fallBreak.update(deltaTime);
         }
         for(JumpBuffer jumpBuffer:jumpBuffers){
             jumpBuffer.update(deltaTime);

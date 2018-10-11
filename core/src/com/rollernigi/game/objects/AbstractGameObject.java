@@ -3,6 +3,7 @@ package com.rollernigi.game.objects;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.math.Vector2;
 
 
@@ -14,6 +15,8 @@ public abstract class AbstractGameObject {
     public Vector2 velocity;
     public Vector2 terminalVelocity;
     public Vector2 friciton;
+
+    public Body body;
 
     public Vector2 acceleration;
     public Rectangle bounds;
@@ -35,11 +38,17 @@ public abstract class AbstractGameObject {
     }
 
     public void update(float deltaTime){
-        updateMotionX(deltaTime);
-        updateMotionY(deltaTime);
-        //移动到最新的位置
-        position.x += velocity.x * deltaTime;
-        position.y += velocity.y * deltaTime;
+        if(body==null){
+            updateMotionX(deltaTime);
+            updateMotionY(deltaTime);
+            //移动到最新的位置
+            position.x += velocity.x * deltaTime;
+            position.y += velocity.y * deltaTime;
+        }else {
+            position.set(body.getPosition());
+            rotation = body.getAngle()*MathUtils.radiansToDegrees;
+        }
+
     }
 
     protected void updateMotionX(float deltaTime){

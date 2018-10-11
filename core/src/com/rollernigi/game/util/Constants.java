@@ -27,4 +27,11 @@ public class Constants {
     public static final String SKIN_COC_UI ="images/cocui.json";
     public static final String PREFERENCES = "coc.prefs";
 
+    //FallBreak数量
+    public static final int FALLBREAK_SPAWN_MAX = 100;
+    //FallBreak的散布半径
+    public static final float FALLBREAK_SPAWN_RADIUS = 3.5f;
+    //游戏结束后的延时
+    public static final float TIME_DELAY_GAME_FINISHED = 4;
+
 }

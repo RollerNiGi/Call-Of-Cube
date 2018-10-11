@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.rollernigi.game.util.Constants;
 
@@ -17,6 +18,8 @@ public class WorldRenderer implements Disposable {
     private SpriteBatch batch;
     private WorldController worldController;
     public boolean hideGUI=false;
+    private static final boolean DEBUG_DRAW_BOX2D_WORLD = false;
+    private Box2DDebugRenderer box2DDebugRenderer;
 
     public WorldRenderer(WorldController worldController){
         this.worldController = worldController;
@@ -32,6 +35,7 @@ public class WorldRenderer implements Disposable {
         cameraGUI.position.set(0,0,0);
         cameraGUI.setToOrtho(true);
         cameraGUI.update();
+        box2DDebugRenderer = new Box2DDebugRenderer();
     }
 
     public void render(){
@@ -55,6 +59,9 @@ public class WorldRenderer implements Disposable {
         batch.begin();
         worldController.level.render(batch);
         batch.end();
+        if(DEBUG_DRAW_BOX2D_WORLD){
+            box2DDebugRenderer.render(worldController.b2dWorld,camera.combined);
+        }
     }
 
     private void renderGuiGameOverMessage(SpriteBatch batch){

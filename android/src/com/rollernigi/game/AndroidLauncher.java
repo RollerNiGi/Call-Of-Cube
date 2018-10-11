@@ -3,6 +3,7 @@ package com.rollernigi.game;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
@@ -11,8 +12,43 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
+
+
 public class AndroidLauncher extends AndroidApplication {
 	private InterstitialAd mInterstitialAd;
+
+	Runnable runnable = new Runnable() {        @Override        public void run() {
+		mInterstitialAd.setAdListener(new AdListener() {
+			@Override
+			public void onAdLoaded() {
+				mInterstitialAd.show();
+			}
+
+			@Override
+			public void onAdFailedToLoad(int errorCode) {
+				// Code to be executed when an ad request fails.
+			}
+
+			@Override
+			public void onAdOpened() {
+				// Code to be executed when the ad is displayed.
+			}
+
+			@Override
+			public void onAdLeftApplication() {
+				// Code to be executed when the user has left the app.
+			}
+
+			@Override
+			public void onAdClosed() {
+				// Code to be executed when when the interstitial ad is closed.
+			}
+		});
+		mInterstitialAd.show();
+	handler.postDelayed(this, 150000);        }    };
+
+
+
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,11 +69,10 @@ public class AndroidLauncher extends AndroidApplication {
 
 		});
 		mInterstitialAd.show();
-
+		handler.postDelayed(runnable, 600000);//每10分钟执行一次runnable.
 		mInterstitialAd.setAdListener(new AdListener() {
 			@Override
 			public void onAdLoaded() {
-				mInterstitialAd.show();
 			}
 
 			@Override
