@@ -1,6 +1,5 @@
 package com.rollernigi.game.objects;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rollernigi.game.BasicClass.Assets;
@@ -28,7 +27,8 @@ public class FallBreak extends AbstractGameObject {
 
         reg=regFallBreak;
         batch.draw(reg.getTexture(),position.x=origin.x,position.y-origin.y,origin.x,origin.y,
-                dimension.x,dimension.y,scale.x,scale.y,rotation,reg.getRegionX(),reg.getRegionY(),reg.getRegionWidth(),reg.getRegionHeight(),false,false);
+                dimension.x,dimension.y,scale.x,scale.y,rotation,reg.getRegionX(),reg.getRegionY(),
+                reg.getRegionWidth(),reg.getRegionHeight(),false,false);
 
     }
 }

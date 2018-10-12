@@ -26,6 +26,7 @@ public class Goal extends AbstractGameObject {
         TextureRegion reg = null;
 
         reg=regGoal;
+
         batch.draw(reg.getTexture(),position.x-origin.x,position.y-origin.y,origin.x,origin.y,dimension.x,dimension.y,
                 scale.x,scale.y,rotation,reg.getRegionX(),reg.getRegionY(),reg.getRegionWidth(),reg.getRegionHeight(),false,false);
     }

@@ -58,6 +58,7 @@ public class Level {
         //游戏对象
         rocks = new Array<Rock>();
         coins = new Array<Coin>();
+        fallBreaks = new Array<FallBreak>();
         jumpBuffers = new Array<JumpBuffer>();
         //加载卡关图片
         Pixmap pixmap=new Pixmap(Gdx.files.internal(filename));
@@ -93,7 +94,7 @@ public class Level {
                 //结束路标
                 else if (BLOCK_TYPE.GOAL.sameColor(currentPixel)){
                     obj = new Goal();
-                    offsetHeight = -7.0f;
+                    offsetHeight = -5.0f;
                     obj.position.set(pixelX,baseHeight+offsetHeight);
                     goal = (Goal)obj;
                 }

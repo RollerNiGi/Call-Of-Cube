@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.rollernigi.game.objects.AbstractGameObject;
 import com.rollernigi.game.objects.FallBreak;
+import com.rollernigi.game.screens.SelectStageScreen;
 import com.rollernigi.game.screens.transitions.DirectedGame;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
@@ -119,6 +120,14 @@ public class WorldController extends InputAdapter {
         level.jumper.setJumpBufferPowerup(true);
     }
 
+    private void onCollisionJumperWithGoal(){
+        goalReached =true;
+        timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_FINISHED;
+        Vector2 centerPosJumper = new Vector2(level.jumper.position);
+        centerPosJumper.x+=level.jumper.bounds.width;
+        spawnFallBreaks(centerPosJumper,Constants.FALLBREAK_SPAWN_MAX,Constants.FALLBREAK_SPAWN_RADIUS);
+    }
+
     private void testCollisions(){
         r1.set(level.jumper.position.x,level.jumper.position.y,level.jumper.bounds.width,level.jumper.bounds.height);
 
@@ -128,6 +137,14 @@ public class WorldController extends InputAdapter {
             r2.set(rock.position.x,rock.position.y,rock.bounds.width,rock.bounds.height);
             if(!r1.overlaps(r2))continue;
             onCollisionJumperWithRock(rock);
+        }
+
+        //碰撞检测 Jumper<- ->Goal
+        if(!goalReached){
+            r2.set(level.goal.bounds);
+            r2.x+=level.goal.position.x;
+            r2.y+=level.goal.position.y;
+            if(r1.overlaps(r2))onCollisionJumperWithGoal();
         }
 
         //碰撞检测 Jumper<- ->Coins
@@ -193,6 +210,7 @@ public class WorldController extends InputAdapter {
             lives--;
             if (isGameOver()){
                 timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_OVER;
+                backToSelectStageScreen();
             }else {
                 initLevel();
             }
@@ -319,9 +337,9 @@ public class WorldController extends InputAdapter {
         return false;
     }
 
-    private void backToMenu(){
+    private void backToSelectStageScreen(){
         ScreenTransition transition =ScreenTransitionSlide.init(0.75f,ScreenTransitionSlide.DOWN,false,Interpolation.bounceOut);
-        game.setScreen(new MenuScreen(game),transition);
+        game.setScreen(new SelectStageScreen(game),transition);
     }
 
     public void changeLevel(String levelNum){

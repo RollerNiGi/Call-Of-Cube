@@ -1,53 +1,67 @@
 ver0.01.png
-size: 128, 228
+size: 128, 282
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Block1
   rotate: false
-  xy: 0, 0
+  xy: 50, 44
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: -1
 Block2
   rotate: false
-  xy: 50, 0
+  xy: 0, 94
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: -1
 Coin1
   rotate: false
-  xy: 100, 0
+  xy: 30, 0
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: -1
+FallBreak
+  rotate: false
+  xy: 0, 0
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
 GamepadBackground
   rotate: false
-  xy: 0, 50
+  xy: 0, 154
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 GamepadKnob
   rotate: false
-  xy: 0, 178
+  xy: 50, 0
   size: 44, 44
   orig: 44, 44
   offset: 0, 0
   index: -1
+Goal
+  rotate: false
+  xy: 50, 94
+  size: 40, 60
+  orig: 40, 60
+  offset: 0, 0
+  index: -1
 JumpBuffer1
   rotate: false
-  xy: 44, 178
+  xy: 10, 0
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: -1
 Jumper1
   rotate: false
-  xy: 64, 178
+  xy: 0, 44
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
