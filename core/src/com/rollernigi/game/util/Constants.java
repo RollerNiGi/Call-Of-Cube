@@ -32,6 +32,6 @@ public class Constants {
     //FallBreak的散布半径
     public static final float FALLBREAK_SPAWN_RADIUS = 3.5f;
     //游戏结束后的延时
-    public static final float TIME_DELAY_GAME_FINISHED = 4;
+    public static final float TIME_DELAY_GAME_FINISHED = 6;
 
 }

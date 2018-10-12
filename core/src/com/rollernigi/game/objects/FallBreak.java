@@ -13,9 +13,9 @@ public class FallBreak extends AbstractGameObject {
     }
 
     private void init (){
-        dimension.set(0.25f,0.5f);
+        dimension.set(0.5f,0.5f);
 
-        regFallBreak= Assets.instance.assetLevelDecoration.smallPart;
+        regFallBreak= Assets.instance.assetCoin1.Coin1;
 
         bounds.set(0,0,dimension.x,dimension.y);
         origin.set(dimension.x/2,dimension.y/2);
@@ -26,7 +26,8 @@ public class FallBreak extends AbstractGameObject {
         TextureRegion reg=null;
 
         reg=regFallBreak;
-        batch.draw(reg.getTexture(),position.x=origin.x,position.y-origin.y,origin.x,origin.y,
+
+        batch.draw(reg.getTexture(),position.x-origin.x,position.y-origin.y,origin.x,origin.y,
                 dimension.x,dimension.y,scale.x,scale.y,rotation,reg.getRegionX(),reg.getRegionY(),
                 reg.getRegionWidth(),reg.getRegionHeight(),false,false);
 

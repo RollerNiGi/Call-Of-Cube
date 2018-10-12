@@ -120,7 +120,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay3.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("00");
+                onPlayClicked("01");
             }
         });
 
@@ -130,7 +130,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay4.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("00");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay5 = new Button(skinCOC,"BlockButton");
@@ -138,7 +138,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay5.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay6 = new Button(skinCOC,"BlockButton");
@@ -146,7 +146,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay6.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay7 = new Button(skinCOC,"BlockButton");
@@ -154,7 +154,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay7.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay8 = new Button(skinCOC,"BlockButton");
@@ -162,7 +162,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay8.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         layer.row();
@@ -172,7 +172,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay9.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
 
@@ -182,7 +182,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay10.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
 
@@ -192,7 +192,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay11.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
 
@@ -202,7 +202,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay12.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay13 = new Button(skinCOC,"BlockButton");
@@ -210,7 +210,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay13.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay14 = new Button(skinCOC,"BlockButton");
@@ -218,7 +218,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay14.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay15 = new Button(skinCOC,"BlockButton");
@@ -226,7 +226,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay15.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
         btnMenuPlay16 = new Button(skinCOC,"BlockButton");
@@ -234,7 +234,7 @@ public class SelectStageScreen extends AbstractGameScreen{
         btnMenuPlay16.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                onPlayClicked("03");
+                onPlayClicked("01");
             }
         });
 

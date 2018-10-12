@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Disposable;
 import com.rollernigi.game.objects.AbstractGameObject;
 import com.rollernigi.game.objects.FallBreak;
 import com.rollernigi.game.screens.SelectStageScreen;
@@ -24,6 +25,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rollernigi.game.objects.Rock;
 import com.rollernigi.game.screens.MenuScreen;
+import com.rollernigi.game.screens.transitions.ScreenTransitionFade;
 import com.rollernigi.game.util.AudioMangager;
 import com.rollernigi.game.util.Constants;
 import com.badlogic.gdx.Input.Buttons;
@@ -45,7 +47,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.rollernigi.game.screens.transitions.ScreenTransition;
 import com.rollernigi.game.screens.transitions.ScreenTransitionSlide;
 
-public class WorldController extends InputAdapter {
+public class WorldController extends InputAdapter implements Disposable {
 
     public int touchDownX,touchDownY,debugSelectedSpr=1;
     public Level level;
@@ -139,13 +141,6 @@ public class WorldController extends InputAdapter {
             onCollisionJumperWithRock(rock);
         }
 
-        //碰撞检测 Jumper<- ->Goal
-        if(!goalReached){
-            r2.set(level.goal.bounds);
-            r2.x+=level.goal.position.x;
-            r2.y+=level.goal.position.y;
-            if(r1.overlaps(r2))onCollisionJumperWithGoal();
-        }
 
         //碰撞检测 Jumper<- ->Coins
 
@@ -166,6 +161,18 @@ public class WorldController extends InputAdapter {
             onCollisionJumperWithJumpBuffer(jumpBuffer);
             break;
         }
+
+        //碰撞检测 Jumper<- ->Goal
+        if(!goalReached){
+            r2.set(level.goal.bounds);
+            r2.x+=level.goal.position.x;
+            r2.y+=level.goal.position.y;
+            if(r1.overlaps(r2)){
+                onCollisionJumperWithGoal();
+                level.jumper.stop();
+            }
+        }
+
     }
 
     public CameraHelper cameraHelper;
@@ -187,22 +194,26 @@ public class WorldController extends InputAdapter {
     private void initLevel(){
         score =0;
         scoreViual = score;
+        goalReached=false;
         level = new Level(selectedLevel);
         cameraFollow(level.jumper,true);
+        initPyhsics();
     }
 
 
     public void update(float deltaTime){
         handleDebugInput(deltaTime);
-        if(isGameOver()){
+        if(isGameOver()||goalReached){
             timeLeftGameOverDelay -= deltaTime;
-            if(timeLeftGameOverDelay<0)init();
+            level.jumper.stop();
+            if(timeLeftGameOverDelay<0)backToSelectStageScreen();
         }else{
             handleDebugInput(deltaTime);
         }
 
         level.update(deltaTime);
         testCollisions();
+        b2dWorld.step(deltaTime,8,3);
         cameraHelper.update(deltaTime);
 
         if(!isGameOver()&&isPalyerFallDown()){
@@ -271,7 +282,7 @@ public class WorldController extends InputAdapter {
             float x =MathUtils.random(-radius,radius);
             float y =MathUtils.random(5.0f,15.0f);
             float rotation=MathUtils.random(0.0f,360.0f)*MathUtils.degreesToRadians;
-            float fallbreakScale = MathUtils.random(0.5f,1.5f);
+            float fallbreakScale = MathUtils.random(0.8f,2.0f);
             fallBreak.scale.set(fallbreakScale,fallbreakScale);
             //为fallbreak对象创建Box2D body并初始化至初始位置和起始旋转角度
             BodyDef bodyDef = new BodyDef();
@@ -338,7 +349,7 @@ public class WorldController extends InputAdapter {
     }
 
     private void backToSelectStageScreen(){
-        ScreenTransition transition =ScreenTransitionSlide.init(0.75f,ScreenTransitionSlide.DOWN,false,Interpolation.bounceOut);
+        ScreenTransition transition =ScreenTransitionFade.init(0.75f);
         game.setScreen(new SelectStageScreen(game),transition);
     }
 
@@ -362,4 +373,8 @@ public class WorldController extends InputAdapter {
         isInputAble=!isInputAble;
     }
 
+    @Override
+    public void dispose() {
+        if(b2dWorld!=null)b2dWorld.dispose();
+    }
 }

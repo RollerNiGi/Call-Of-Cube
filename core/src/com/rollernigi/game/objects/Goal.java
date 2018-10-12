@@ -17,8 +17,8 @@ public class Goal extends AbstractGameObject {
         regGoal = Assets.instance.assetLevelDecoration.goal;
 
         //set bounds of Rectangle
-        bounds.set(1,Float.MIN_VALUE,10,Float.MAX_VALUE);
-        origin.set(dimension.x/2.0f,0.0f);
+        bounds.set(0,0,dimension.x,dimension.y);
+
     }
 
     @Override

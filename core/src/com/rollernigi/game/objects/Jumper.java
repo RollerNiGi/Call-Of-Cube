@@ -138,6 +138,10 @@ public class Jumper extends AbstractGameObject{
         }
     }
 
+    public void stop(){
+        velocity.x=0;
+    }
+
     @Override
     public void render(SpriteBatch batch) {
         TextureRegion reg = null;

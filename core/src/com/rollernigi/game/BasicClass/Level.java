@@ -137,20 +137,21 @@ public class Level {
     }
 
     public void render(SpriteBatch batch){
-        goal.render(batch);
         //渲染游戏对象
+        for(FallBreak fallBreak:fallBreaks){
+                    fallBreak.render(batch);
+        }
+        goal.render(batch);
         for(Rock rock : rocks){
             rock.render(batch);
         }
         for (Coin coin:coins){
             coin.render(batch);
         }
-        for(FallBreak fallBreak:fallBreaks){
-            fallBreak.render(batch);
-        }
         for(JumpBuffer jumpBuffer:jumpBuffers){
             jumpBuffer.render(batch);
         }
+
         jumper.render(batch);
     }
 
